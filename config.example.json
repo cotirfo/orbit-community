@@ -1,0 +1,158 @@
+{
+  "port": 8787,
+  "routerOS": {
+    "enabled": false,
+    "user": "orbit-monitor",
+    "timeoutMs": 5000
+  },
+  "routerUrl": "https://192.0.2.1",
+  "caFile": "certs/mikrotik-ca.crt",
+  "intervalSeconds": 2,
+  "connectionSeconds": 5,
+  "detailsSeconds": 30,
+  "retentionDays": 7,
+  "lan": {
+    "enabled": false,
+    "listenAddress": "192.0.2.10",
+    "port": 8443,
+    "additionalPorts": [],
+    "allowedSubnets": [
+      "192.0.2.2/32"
+    ],
+    "hostAliases": [
+      "orbit.example"
+    ],
+    "maxClients": 32,
+    "controlPort": 18879,
+    "adminNatSources": [
+      "192.0.2.2"
+    ]
+  },
+  "wan": {
+    "WAN1": "ether1",
+    "WAN2": "ether5"
+  },
+  "caFingerprint": "",
+  "persistCollector": false,
+  "lanInterface": "ether2",
+  "monitoredInterfaces": [],
+  "crossQuality": {
+    "intervalSeconds": 10,
+    "links": []
+  },
+  "huawei": {
+    "enabled": false,
+    "origin": "https://192.0.2.2",
+    "sourceIp": "192.0.2.10",
+    "certificateFingerprint": "",
+    "protectedMacs": [],
+    "persistSession": true,
+    "intervalSeconds": 10,
+    "heartbeatSeconds": 5,
+    "timeoutMs": 8000
+  },
+  "geoConnections": {
+    "enabled": false,
+    "cityDatabase": "data/geoip/GeoLite2-City.mmdb",
+    "asnDatabase": "data/geoip/GeoLite2-ASN.mmdb",
+    "huaweiNatAddress": "192.0.2.45",
+    "maxCacheEntries": 2048,
+    "cacheTtlSeconds": 86400,
+    "maxHistoryEntries": 2000,
+    "retentionMinutes": 60
+  },
+  "speedTest": {
+    "enabled": false,
+    "cooldownSeconds": 300,
+    "automaticIntervalSeconds": 0,
+    "retentionDays": 30,
+    "profiles": [
+      {
+        "name": "WAN1",
+        "interface": "ether1",
+        "table": "orbit-speed-wan1",
+        "probe": "1.1.1.1",
+        "gateway": "203.0.113.1",
+        "routerSource": "192.0.2.10",
+        "localPort": 18201,
+        "localPorts": [
+          18201,
+          18203,
+          18205
+        ],
+        "serverList": "orbit-speed-servers",
+        "serverHosts": [
+          "speed.cloudflare.com"
+        ]
+      },
+      {
+        "name": "WAN2",
+        "interface": "ether5",
+        "table": "orbit-speed-wan2",
+        "probe": "8.8.4.4",
+        "gateway": "203.0.113.2",
+        "routerSource": "192.0.2.10",
+        "localPort": 18202,
+        "localPorts": [
+          18202,
+          18204,
+          18206
+        ],
+        "serverList": "orbit-speed-servers",
+        "serverHosts": [
+          "speed.cloudflare.com"
+        ]
+      }
+    ],
+    "ookla": {
+      "enabled": false,
+      "binaryPath": "bin/speedtest",
+      "sourceIp": "192.0.2.10"
+    }
+  },
+  "energy": {
+    "enabled": false,
+    "deviceId": "",
+    "address": "192.0.2.46",
+    "protocolVersion": 3.4,
+    "intervalSeconds": 10,
+    "timeoutSeconds": 12,
+    "retries": 1,
+    "staleSeconds": 30,
+    "maxGapSeconds": 30,
+    "estimateMode": "simplified",
+    "simplified": {
+      "conservativeFraction": 0.5,
+      "nominalFraction": 0.7,
+      "optimisticFraction": 0.85
+    },
+    "calibration": {
+      "inputToOutputEfficiency": null,
+      "chargingWatts": null,
+      "idleInputWatts": null,
+      "basis": ""
+    },
+    "scenarios": {},
+    "hardware": {
+      "model": "Nobreak de exemplo",
+      "volts": 12,
+      "watts": 500,
+      "va": 1000,
+      "batteryCapacitiesAh": [
+        10,
+        30
+      ]
+    },
+    "protectedEquipment": [
+      "Roteador",
+      "Equipamento de rede"
+    ]
+  },
+  "monitorHttps": {
+    "enabled": false,
+    "keyFile": "certs/monitor.key",
+    "certFile": "certs/monitor.crt",
+    "caFile": null,
+    "sessionSeconds": 43200
+  }
+}

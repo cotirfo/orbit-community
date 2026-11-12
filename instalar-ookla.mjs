@@ -1,0 +1,20 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import os from 'node:os';
+import crypto from 'node:crypto';
+import {execFileSync} from 'node:child_process';
+import {fileURLToPath} from 'node:url';
+
+const root=path.dirname(fileURLToPath(import.meta.url)),url='https://install.speedtest.net/app/cli/ookla-speedtest-1.2.0-win64.zip';
+const expected='13e3d888b845d301a556419e31f14ab9bff57e3f06089ef2fd3bdc9ba6841efa';
+if(process.platform!=='win32'||process.arch!=='x64')throw new Error('Este instalador requer Windows x64.');
+console.log('Baixando cliente oficial Ookla 1.2.0 para este PC. Nenhum termo sera aceito automaticamente.');
+const response=await fetch(url,{signal:AbortSignal.timeout(30000)});if(!response.ok)throw new Error('Download oficial falhou: HTTP '+response.status);
+if(new URL(response.url).hostname!=='install.speedtest.net')throw new Error('Destino do download inesperado.');
+const bytes=Buffer.from(await response.arrayBuffer());if(bytes.length>20e6||crypto.createHash('sha256').update(bytes).digest('hex')!==expected)throw new Error('Pacote diferente da versao oficial conferida nesta instalacao.');
+const temp=fs.mkdtempSync(path.join(os.tmpdir(),'orbit-ookla-')),zip=path.join(temp,'ookla.zip'),dest=path.join(temp,'expanded');fs.writeFileSync(zip,bytes);
+const literal=value=>"'"+value.replaceAll("'","''")+"'";
+const script='Expand-Archive -LiteralPath '+literal(zip)+' -DestinationPath '+literal(dest)+' -Force';
+execFileSync('powershell.exe',['-NoProfile','-NonInteractive','-EncodedCommand',Buffer.from(script,'utf16le').toString('base64')],{windowsHide:true,stdio:'inherit'});
+fs.mkdirSync(path.join(root,'bin'),{recursive:true});for(const name of ['speedtest.exe','speedtest.md'])fs.copyFileSync(path.join(dest,name),path.join(root,'bin',name));
+console.log('Instalado em bin/speedtest.exe. Execute Aceitar-Termos-OOKLA.cmd e leia/responda aos termos no terminal. Depois reinicie somente o servico LAN.');

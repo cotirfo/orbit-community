@@ -1,0 +1,8 @@
+[
+  {"id":"1","host":"ookla-1.example","name":"Servidor de exemplo 1","location":"Localização fictícia","links":["WAN1"],"port":8080,"provider":"Operador de exemplo"},
+  {"id":"2","host":"ookla-2.example","name":"Servidor de exemplo 2","location":"Localização fictícia","links":["WAN1"],"port":8080,"provider":"Operador de exemplo"},
+  {"id":"3","host":"ookla-3.example","name":"Servidor de exemplo 3","location":"Localização fictícia","links":["WAN1"],"port":8080,"provider":"Operador de exemplo"},
+  {"id":"4","host":"ookla-4.example","name":"Servidor de exemplo 4","location":"Localização fictícia","links":["WAN2"],"port":8080,"provider":"Operador de exemplo"},
+  {"id":"5","host":"ookla-5.example","name":"Servidor de exemplo 5","location":"Localização fictícia","links":["WAN2"],"port":8080,"provider":"Operador de exemplo"},
+  {"id":"6","host":"ookla-6.example","name":"Servidor de exemplo 6","location":"Localização fictícia","links":["WAN2"],"port":8080,"provider":"Operador de exemplo"}
+]

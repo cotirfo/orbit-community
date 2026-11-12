@@ -1,0 +1,5 @@
+[
+  {"id":"medicao-1","name":"Servidor de exemplo 1","provider":"Operador de exemplo","origin":"https://medicao-1.example","protocol":"librespeed","pingPath":"/empty.php","downloadPath":"/garbage.php","uploadPath":"/empty.php","source":"Catálogo ilustrativo. Configure um servidor HTTPS autorizado antes de usar."},
+  {"id":"medicao-2","name":"Servidor de exemplo 2","provider":"Operador de exemplo","origin":"https://medicao-2.example","protocol":"librespeed","pingPath":"/empty.php","downloadPath":"/garbage.php","uploadPath":"/empty.php","source":"Catálogo ilustrativo. Configure um servidor HTTPS autorizado antes de usar."},
+  {"id":"cloudflare","name":"Cloudflare — Anycast (local informado no resultado)","provider":"Cloudflare","origin":"https://speed.cloudflare.com","protocol":"cloudflare","pingPath":"/__down?bytes=0","downloadPath":"/__down","uploadPath":"/__up","source":"https://speed.cloudflare.com/about"}
+]

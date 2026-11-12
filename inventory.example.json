@@ -1,0 +1,36 @@
+{
+  "source": "Inventario ficticio para demonstrar o formato; preencher localmente",
+  "router": {
+    "model": "RouterOS",
+    "board": "EXAMPLE",
+    "version": "7.x",
+    "ip": "192.0.2.1",
+    "lan": "bridge"
+  },
+  "links": [
+    {
+      "name": "WAN1",
+      "interface": "ether1",
+      "contractMbps": 100,
+      "gateway": "203.0.113.1",
+      "probe": "1.1.1.1",
+      "table": "via-wan1",
+      "pccBuckets": 1
+    },
+    {
+      "name": "WAN2",
+      "interface": "ether5",
+      "contractMbps": 100,
+      "gateway": "203.0.113.2",
+      "probe": "8.8.4.4",
+      "table": "via-wan2",
+      "pccBuckets": 1
+    }
+  ],
+  "pcc": {
+    "totalBuckets": 2,
+    "classifier": "both-addresses-and-ports",
+    "crossFailover": true
+  },
+  "devices": []
+}

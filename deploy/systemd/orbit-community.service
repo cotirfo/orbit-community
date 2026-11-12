@@ -1,0 +1,28 @@
+[Unit]
+Description=ORBIT Community Edition
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+User=orbit-community
+Group=orbit-community
+WorkingDirectory=/opt/orbit-community/current
+Environment=NODE_ENV=production
+Environment=ORBIT_DATA_DIR=/var/lib/orbit-community
+EnvironmentFile=-/etc/orbit-community/orbit.env
+ExecStart=/usr/bin/node /opt/orbit-community/current/server.mjs
+StateDirectory=orbit-community
+StateDirectoryMode=0700
+Restart=on-failure
+RestartSec=5
+TimeoutStopSec=90
+UMask=0077
+CapabilityBoundingSet=
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+
+[Install]
+WantedBy=multi-user.target

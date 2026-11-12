@@ -1,0 +1,20 @@
+{
+  "name": "orbit",
+  "version": "0.1.0",
+  "private": true,
+  "license": "MIT",
+  "type": "module",
+  "description": "Telemetria e monitoramento local RouterOS, Huawei e Debian",
+  "engines": {
+    "node": ">=20.19.0"
+  },
+  "scripts": {
+    "start": "node server.mjs",
+    "build": "npm --prefix tools/browser-build run build",
+    "test": "node --test tests/*.test.mjs",
+    "check": "node tools/validate-source.mjs"
+  },
+  "dependencies": {
+    "maxmind": "5.0.7"
+  }
+}
